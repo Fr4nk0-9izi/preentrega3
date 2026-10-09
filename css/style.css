@@ -1,0 +1,193 @@
+/*Family-font: Poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'); /*uso "@import" para optimizar la cantidad de líneas de código*/
+
+:root {
+    /* Color principal del sitio (Rosa vibrante)*/
+    --color-primary: #ff0460;
+    /* Texto principal y general del cuerpo(Contraste sobre fondo oscuro) */
+    --color-text-main: #f0f8ff;
+    /* Capas oscuras para degradados del header (disimula el contraste de los enlaces del <nav>)*/
+    --color-gradient-dark: rgb(28 28 28 / 60%);
+    /* Capas rosas para colorear las partes blancas del fondo */
+    --color-gradient-pink: rgb(240 98 202 / 95%);
+    /* Fondo semitransparente para contrastar entre las letras y el fondo*/
+    --color-box-bg: rgb(0 0 0 / 40%);
+    /* Color de fondo para textos de segunda jerarquía */
+    --color-box-bg2: rgba(200, 200, 200, 0.4);
+    /* Color de los enlaces de navegación y subtítulos */
+    --color-secondary: #f6c3f4;
+    /* Tipografía para el título principal (H1) */
+    --color-h-1: #f7f2f7;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+/*quiero que las dimensiones de todas las cajas tengan en cuenta la totalidad de los espacios y no solo el contenido*/
+ }
+/*  ==========================================
+    ESTILOS GENERALES Y CONFIGURACION DE FONDO
+    ========================================== */
+body{
+    font-family: "Poppins", sans-serif;
+    background-color: var(--color-primary);
+    /*Se toma un fondo de tono claro para que el color coincida acorde al utilizado en el codigo mediante el blend*/
+    background-image: url('../assets/img/bg2.jpg');
+    background-blend-mode:multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    min-width: 100%; /*A los 100vw se le sumaban los pixeles de los margenes internos con el box-sizing, lo que generaba un scrolleo lateral innecesario.*/
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-main);
+    padding: 2%; /*padding incluido luego de experimentar con DevTools, el porcentaje es para que la medida se ajuste a la pantalla del usuario y no se pierda el estilo en distintas resoluciones o pantallas*/
+    }
+/*  ================================
+    ENCABEZADO Y PANEL DE NAVEGACIÓN
+    ================================ */
+header{ /*Este elemento es para contener las configuraciones de fondo y el paddding*/
+    background-image:linear-gradient(45deg, var(--color-gradient-dark), var(--color-gradient-pink)), url('../assets/img/headerbg.jpg');
+    background-blend-mode: multiply;
+    padding: 27px;
+    }
+.header-principal { /*La clase se utilizara para separar entre contenedores flex y fondo */
+    display: flex;
+    flex-direction: row;          /* Distribuye izquierda y derecha en una misma línea */
+    justify-content: space-between; /* Separa los extremos: bloque de texto izquierda, logo derecha */
+    align-items: center;          /* Centra el logo verticalmente con respecto a todo el bloque de la izquierda */
+    width:100%;
+}
+h1{
+    width: 100%;
+    max-width: 100%; /*Evita que el H1 se desborde del contenedor padre y genere un scroll horizontal (ocurre en modo ventana)*/
+    font-size: 2.9rem;
+    font-weight: 700;
+    color: var(--color-h-1);
+    line-height: 1.5;
+    }
+.panelnav{
+    display: flex;
+    flex-direction: column;       /* Apila el Nav debajo del H1*/
+    gap: 1rem;                    /* Espacio prolijo entre título y barra de navegación */
+}
+.ulnav{
+    display: flex;
+    flex-wrap: wrap; /*para que al cambiar el tamaño de pantalla el panel de nav no escape del fondo del header que los contiene*/
+    width: 100%;
+    justify-content: flex-start; /*ajusta el panel de navegación a la izquierda, justo debajo del H1*/
+    list-style: none;
+    gap: 1.5rem; /*espaciado entre los elementos de la lista*/
+    }
+    .ulnav a{
+    background-color:var(--color-box-bg); 
+    font-weight: bold;
+    transition: color 0.3s ease;
+    color:var(--color-secondary);}
+    .ulnav a:hover{color:var(--color-primary);} 
+.logo-header{
+    max-width: 130px;
+    height: auto;
+    }
+/*  =========================================
+    ESTILOS GENERALES DE LOS CONTENIDOS MAIN
+    ========================================= */
+section{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--color-box-bg); /*El fondo de contraste se incluye aqui para que no se rompa el diseño al agregar margin_bottom para incluir espaciado entre entre parrafos distintos*/
+    border-radius: 0.5rem; /*suaviza mas el estilo tarjeta*/
+    }
+h2{
+    color: var(--color-secondary);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration:underline;
+    text-decoration-color: var(--color-secondary);
+    text-decoration-thickness: 0.25rem; /*grosor seleccionado mediante DevTools*/
+    }
+p{
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+article{
+    margin: 1rem;
+    padding: 1rem; /*necesarios para una estetica mas tridimencional y dandole mas profundidad a la jerarquia de los elementos*/
+    background-color: var(--color-box-bg2); /*segunda capa de color para aumentar la opacidad y resaltar jerarquias menores*/
+    border-radius: 0.5rem;
+}
+/*  ============================
+    ESTILOS GENERALES DEL FOOTER
+    ============================*/
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background-color: var(--color-box-bg2);
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer-info p, .footer-social {
+    color: var(--color-secondary);;
+    margin-bottom: 0; /* Sobrescribe el margen global de los p */
+}
+
+footer a {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--gradient-dark); /*el color primario de la paleta no hace suficiente contraste*/
+}
+
+.project-container {
+    display: flex;
+    flex-direction: row; /*necesito que las cartas se alineen horizontalmente*/
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    margin: 20px 10px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--color-box-bg);
+    flex: 1 1 30%; /* Se estiran o encogen, pero no bajan del tercio de pantalla */
+    margin: 0 0 20px 0 /*Para separar los H3 del contenido de las cartas*/;
+    padding: 15px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column; /*asegura un comportamiento ordenado del texto*/
+    flex-wrap: wrap;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--color-box-bg2);
+    border-radius: 0.5rem;
+}
